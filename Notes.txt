@@ -1,0 +1,72 @@
+Pygame is the library we use to build games and sys helps us exit the program so we import them first.
+
+py.game.init() sets up all the modules that PyGame needs to run, we always need to call this at the beginning of our projects.
+
+pygame.display.set_mode() lets us specify the dimensions of our game window.
+
+pygame.display.set_caption() lets us set the title of our game window.
+
+The clock = pygame.time.Clock() line creates a clock object that helps us control how fast the game runs. By setting the frame rate to 60 frames per second, we ensure that
+the game runs smooth.
+
+Main Game Loop: The while True loop is the heart of our game. It keeps running, allowing us to update the game and check for events like closing the window.
+
+    Event Handling: We use pygame.event.get() to check if the player wants to quit the game. If they do, we call pygame.quit() to clean up and sys.exit() to exit the
+    program.
+
+    Drawing the Background: The screen.fill((0, 0, 0)) line fills the screen with black, essentially clearing it for the next frame.
+
+    Updating the Display: Finally, pygame.display.flip() updates the window to show whatever we’ve drawn.
+
+Player Settings: We define the player’s size (player_width and player_height), starting position (player_x and player_y), and speed (player_speed). The starting position is
+calculated so that the player appears centered horizontally near the bottom of the window.
+
+Handling Player Movement: Inside the main game loop, we check which keys are pressed using pygame.key.get_pressed(). This function returns a list of all keys on the
+keyboard, with a True value for the keys that are currently pressed. If the left arrow key is pressed, and the player isn’t at the edge of the screen, we move the player
+to the left by subtracting player_speed from player_x. Similarly, we move the player to the right if the right arrow key is pressed.
+
+Drawing the Player: The pygame.draw.rect() function draws a rectangle (our player) on the screen. The parameters are the screen to draw on, the color of the rectangle (a
+shade of blue in this case), and the rectangle’s position and size.
+
+Bullet Settings: We define the bullet’s size (bullet_width and bullet_height), speed (bullet_speed), and a list (bullets) to keep track of all active bullets.
+
+Firing Bullets: Inside the main loop, we check for a KEYDOWN event, which occurs when any key is pressed. If the space bar (pygame.K_SPACE) is pressed, we create a new
+bullet at the player’s current position. The bullet’s x-position is calculated to be centered horizontally with the player, and the bullet is then added to the bullets list.
+
+Updating Bullet Positions: Each bullet in the bullets list is moved upwards by subtracting bullet_speed from its y-position. Bullets that move off the top of the screen are
+removed from the list to save memory.
+
+Drawing Bullets: We loop through the bullets list and use pygame.draw.rect() to draw each bullet on the screen.
+
+Enemy Settings: We define the size (enemy_width and enemy_height), speed (enemy_speed), and a list (enemies) to track all active enemies.
+
+Spawning Enemies: We use a timer to spawn a new enemy every 2 seconds. The current time is tracked with pygame.time.get_ticks(). If enough time has passed since the last
+enemy was spawned, we create a new enemy at a random horizontal position above the screen (so it moves downward). This enemy is then added to the enemies list.
+
+Updating Enemy Positions: Each enemy in the enemies list moves downward by adding enemy_speed to its y-position. If an enemy moves off the bottom of the screen, it’s
+removed from the list.
+
+Drawing Enemies: We loop through the enemies list and use pygame.draw.rect() to draw each enemy on the screen.
+
+Collision Detection: We define a function check_collision that takes the positions and sizes of two rectangles and checks if they overlap using colliderect(). This is how
+we detect if a bullet has hit an enemy.
+
+Removing Colliding Objects: Inside the main loop, after updating the positions of the bullets and enemies, we check if any bullet has collided with any enemy. If they
+have, both the bullet and the enemy are removed from their respective lists.
+
+
+
+Ideas to add to game:
+
+    Add a Scoring System: Track how many enemies the player destroys and display the score on the screen.
+
+    Create Different Enemy Types: Make enemies that move differently, shoot back, or take multiple hits to destroy.
+
+    Enhance Graphics: Replace the rectangles with images for the player, bullets, and enemies.
+
+    Add Sound Effects: Make the game more immersive by adding sounds for shooting, hitting enemies, and other actions.
+
+    Introduce Levels: Add different levels or waves of enemies to increase the difficulty as the player progresses.
+
+    Add Player Health and Damage: Allow the player to take damage when colliding with an enemy and lose the game if their health reaches zero.
+

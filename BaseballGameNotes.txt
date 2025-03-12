@@ -1,0 +1,23 @@
+See about how to implement menu screens for start up, stat screens, and record screens
+
+Implement more stats, inning tracking correctly, and stats should be relative to ratings within a range
+
+See about adding graphics
+
+See about adding more attribute for Batters and Pitchers
+
+See about making it so users can save progress and pick specific team to play as
+
+See about adding a draft and how to create new players as rookies
+
+See about adding player development
+
+See about adding team staff (doctors, scouts, coaches)
+
+See about adding playoffs and a champion
+
+See about adding awards, records, career stat tracking, and a HOF
+
+Different menus for team home, league home
+
+See about way to allow user to edit player ratings, development, ...
